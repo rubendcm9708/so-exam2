@@ -31,7 +31,7 @@ El segundo parcial del curso sistemas operativos trata sobre el manejo de namesp
  * Cada proceso debe poder acceder solo al 50% de la CPU
  * Cuando uno de los procesos se cancela, el que continua ejecutándose no debe acceder a mas del 50% de la CPU
 
- 
+### Desarrollo Punto 3  
 Para poder tener la certeza de que los procesos que evaluaremos usan todos los recursos disponibles, generamos un script con una suma en ciclo infinito. Este se almacenó en la ruta */home/exam2/* el cual es el siguiente:
 
 ![][1]  
