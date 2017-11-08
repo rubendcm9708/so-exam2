@@ -32,11 +32,46 @@ El segundo parcial del curso sistemas operativos trata sobre el manejo de namesp
  * Cuando uno de los procesos se cancela, el que continua ejecutándose no debe acceder a mas del 50% de la CPU
 
  
-Para poder tener la certeza de que los procesos que evaluaremos usan todos los recursos disponibles, generamos un script con una suma en ciclo infinito, el cual es el siguiente
+Para poder tener la certeza de que los procesos que evaluaremos usan todos los recursos disponibles, generamos un script con una suma en ciclo infinito. Este se almacenó en la ruta */home/exam2/* el cual es el siguiente:
 
 ![][1]  
- 
- 
+
+Como se solicita hacer la partición de la CPU entre dos procesos, se crearon 2 scripts identicos, llamados *ciclo.sh* y *ciclo2.sh*, ambos con las mismas líneas de código para evitar problemas a la hora de medir el consumo. A continuación se les agregó permisos de ejecución.
+
+![][2]  
+
+El sistema tiene ciertos servicios que siempre están en ejecución, estos son necesarios para el funcionamiento constante del sistema. Se pueden añadir más servicios a esta lista. Para ello, debemos acceder a */etc/systemd/system/* y crear allí dos servicios adicionales, que serán los script que creamos anteriormente. Para ello usamos el comando *touch*, se les dá todos los permisos necesarios y lo editamos usando el editor de texto *vi*. Esto para ambos servicios.
+
+![][3] 
+
+Lo que se escribe dentro de estos archivos .service es lo siguiente
+
+```
+[Unit]
+Description=Ciclo_infinito
+After=network.target
+
+[Service]
+ExceStart=/root/Parcial2/consume_cpu.sh
+CPUQuote=50%
+```
+Donde el *CPUQuote* es el % de nuestro núcleo que le asignaremos al proceso, y *ExceStart* es la ruta donde se encuentra nuestro script.
+
+A continuación, debemos hacer un reload al *daemon* que esta encargado de ejecutar los servicios de systemd. Finalmente, podemos usar *systemctl start* seguido del nombre del servicio que queremos ejecutar.
+
+![][4]
+
+Con esto, ya podremos consultar la lista de procesos en ejecución usando el comando *top*. Se despliega la siguiente información:
+
+![][5]
+
+Como podemos observar, existen 2 procesos llamados *ciclo2.sh* y *ciclo.sh* activos, los cuales consumen 49,8% y 49,5% de CPU, que son valores muy cercanos al 50%.
+
+El siguiente punto a evaluar, es si al matar uno de los procesos, el otro aprovechará los recursos que no se están usando y este valor subirá al 100%. A continuación, usamos el comando *kill -9* seguido del PID *3124* que es el idenficador del proceso *ciclo2.sh*.
+
+![][6]
+
+Efectivamente, el proceso *ciclo1.sh* esta consumiendo exactamente el 50% de la CPU, ya que una de las funcionalidades de *CPUQuota* es que el valor asignado al proceso, es el límite máximo de recursos que podrá usar. 
  
 4.  Realice una prueba de concepto empleando systemd y el recurso de control CPUShares teniendo en cuenta los requerimientos que se describen a continuación. Incluya evidencias del funcionamiento de lo solicitado (30%):
  * Las pruebas se realizaran sobre un solo núcleo de la CPU
