@@ -2,7 +2,7 @@
 **Universidad ICESI**  
 **Curso:** Sistemas Operativos  
 **Docente:** Daniel Barragán C.  
-**Tema:** Namespaces, CGroups, LXC
+**Tema:** Namespaces, CGroups, LXC  
 **Correo:** daniel.barragan at correo.icesi.edu.co  
 
 **Estudiante:** Rubén Darío Ceballos Muriel  
@@ -30,6 +30,10 @@ El segundo parcial del curso sistemas operativos trata sobre el manejo de namesp
  * Se deben ejecutar dos procesos
  * Cada proceso debe poder acceder solo al 50% de la CPU
  * Cuando uno de los procesos se cancela, el que continua ejecutándose no debe acceder a mas del 50% de la CPU
+
+ 
+ 
+ 
 4.  Realice una prueba de concepto empleando systemd y el recurso de control CPUShares teniendo en cuenta los requerimientos que se describen a continuación. Incluya evidencias del funcionamiento de lo solicitado (30%):
  * Las pruebas se realizaran sobre un solo núcleo de la CPU
  * Se deben ejecutar dos procesos
@@ -40,3 +44,14 @@ El segundo parcial del curso sistemas operativos trata sobre el manejo de namesp
 
 ### Referencias
 https://github.com/ICESI/so-containers
+
+[1]: images/proceso.PNG
+[2]: images/procesos.PNG
+[3]: images/cpuquote.PNG
+[4]: images/cpuquote_inicio_procesos.PNG
+[5]: images/cpuquote_top_procesos.PNG
+[6]: images/cpuquote_top_proceso1.PNG
+[7]: images/cpushares.PNG
+[8]: images/cpushares_inicio_procesos.PNG
+[9]: images/cpushares_top_procesos.PNG
+[10]: images/cpushares_top_proceso1.PNG
