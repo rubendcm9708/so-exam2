@@ -3,7 +3,12 @@
 **Curso:** Sistemas Operativos  
 **Docente:** Daniel Barragán C.  
 **Tema:** Namespaces, CGroups, LXC
-**Correo:** daniel.barragan at correo.icesi.edu.co
+**Correo:** daniel.barragan at correo.icesi.edu.co  
+
+**Estudiante:** Rubén Darío Ceballos Muriel  
+**Código:** A00054636  
+**Correo estudiante:** rubendcm9708@gmail.com  
+**Git URL:** https://github.com/rubendcm9708/so-exam2/tree/A00054636/so-exam2
 
 ### Objetivos
 * Comprender los fundamentos que dan origen a las tecnologías de contenedores virtuales
